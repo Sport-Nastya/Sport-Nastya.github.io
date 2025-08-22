@@ -12,6 +12,8 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    padding: 10px; /* Добавляем отступ для рамки */
+    min-height: 100vh;
 }
 
 .container {
@@ -20,10 +22,13 @@ body {
     padding: 0 20px;
 }
 
-/* Пульсирующая неоновая рамка */
+/* Пульсирующая неоновая рамка - ОБНОВЛЕНО */
 .neon-border {
     position: fixed;
-    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     border: 2px solid #00ff88;
     border-radius: 15px;
     pointer-events: none;
@@ -46,8 +51,8 @@ body {
 
 /* Секции */
 section {
-    padding: 100px 0;
-    min-height: 100vh;
+    padding: 80px 0;
+    min-height: auto; /* Убираем фиксированную высоту */
     display: flex;
     align-items: center;
 }
@@ -88,6 +93,7 @@ h2::after {
 /* Герой секция */
 #hero {
     background: linear-gradient(135deg, rgba(248, 255, 248, 0.95) 0%, rgba(240, 248, 240, 0.95) 100%);
+    padding: 60px 0;
 }
 
 #hero .container {
@@ -377,8 +383,7 @@ h2::after {
     font-weight: bold;
 }
 
-
-/* Простое исправление без изменения HTML */
+/* Секция галереи */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -389,27 +394,15 @@ h2::after {
 .gallery-grid img {
     width: 100%;
     height: 330px;
-    object-fit: contain; /* Важное изменение! */
+    object-fit: contain;
     border-radius: 15px;
     transition: all 0.3s ease;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     background: #f8f8f8;
 }
 
-@media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .gallery-grid img {
-        height: auto;
-        max-height: 400px;
-        object-fit: contain;
-    }
-}
 .gallery-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -491,8 +484,58 @@ h2::after {
     50% { transform: translateY(-10px); }
 }
 
+/* Футер - ПОДНЯТЫЙ ВЫШЕ */
+.site-footer {
+    background: linear-gradient(135deg, #e8f5e8 0%, #d8ecd8 100%);
+    padding: 20px 0;
+    text-align: center;
+    border-top: 2px solid #00ff88;
+    margin-top: 10px; /* Минимальный отступ сверху */
+    position: relative;
+    z-index: 100;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-footer p {
+    color: #2d3748;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.telegram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #0088cc !important;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.telegram-link:hover {
+    color: #00ff88 !important;
+    transform: translateY(-1px);
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
+    body {
+        padding: 8px;
+    }
+    
+    .neon-border {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+    }
+    
     #hero .container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -537,11 +580,23 @@ h2::after {
     }
     
     .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: 1fr;
+        gap: 25px;
     }
     
     .gallery-grid img {
-        height: 280px;  /* Адаптивная высота для мобильных */
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+    }
+    
+    .site-footer {
+        padding: 15px 0;
+        margin-top: 5px;
+    }
+    
+    .site-footer p {
+        font-size: 0.9rem;
     }
 }
 
