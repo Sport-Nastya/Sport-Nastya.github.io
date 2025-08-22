@@ -377,23 +377,37 @@ h2::after {
     font-weight: bold;
 }
 
-/* Секция галереи - ОБНОВЛЕНО: высота 330px */
+
+/* Простое исправление без изменения HTML */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    gap: 20px;
     margin-top: 50px;
 }
 
 .gallery-grid img {
     width: 100%;
-    height: 420px;  /* ОБНОВЛЕНО: высота 330px */
-    object-fit: cover;
+    height: 330px;
+    object-fit: contain; /* Важное изменение! */
     border-radius: 15px;
     transition: all 0.3s ease;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: #f8f8f8;
 }
 
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .gallery-grid img {
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+    }
+}
 .gallery-grid img:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
